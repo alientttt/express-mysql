@@ -1,7 +1,17 @@
-const getAllUser = (req, res) => {
-  res.json({
-    message: "GET users endpoint.",
-  });
+const UserModel = require("../models/users");
+const getAllUser = async (req, res) => {
+  try {
+    const [data] = await UserModel.getAllUser();
+    res.json({
+      message: "GET products endpoint.",
+      data: data,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error retrieving products.",
+      error: error.message,
+    });
+  }
 };
 
 const createUser = (req, res) => {
