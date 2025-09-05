@@ -2,28 +2,12 @@ const express = require("express");
 const usersControllers = require("../controllers/users.js");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    message: "GET users endpoint.",
-  });
-});
+router.get("/", usersControllers.getAllUser);
 
-router.post("/", (req, res) => {
-  res.json({
-    message: "POST users endpoint.",
-  });
-});
+router.post("/", usersControllers.createUser);
 
-router.patch("/:id", (req, res) => {
-  res.json({
-    message: "UPDATE users endpoint.",
-  });
-});
+router.patch("/:id", usersControllers.updateUser);
 
-router.delete("/:id", (req, res) => {
-  res.json({
-    message: "DELETE users endpoint.",
-  });
-});
+router.delete("/:id", usersControllers.deleteUser);
 
 module.exports = router;
